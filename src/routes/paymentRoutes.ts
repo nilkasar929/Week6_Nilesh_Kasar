@@ -4,7 +4,7 @@ import auth from '../middleware/authMiddleware';
 
 const router = express.Router();
 
-router.post('/orders', auth, paymentController.createOrder);
-router.get('/orders/:id', auth, paymentController.getOrderById);
+router.post('/orders', auth, paymentController.createPayment);
+// router.get('/orders/:id', auth, paymentController.getOrderById);
 
 export default router;

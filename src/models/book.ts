@@ -29,19 +29,24 @@ Book.init({
     primaryKey: true,
   },
   bookCode: {
-    type:DataTypes.STRING
+    type:DataTypes.STRING,
+    allowNull: false,
   },
   title: {
-    type:DataTypes.STRING
+    type:DataTypes.STRING,
+    allowNull: false,
   },
   description: {
-    type:DataTypes.TEXT
+    type:DataTypes.TEXT,
+    allowNull: false,
   },
   publishedYear: {
-    type:DataTypes.INTEGER
+    type:DataTypes.INTEGER,
+    allowNull: false,
   },
   price: {
-    type:DataTypes.DECIMAL
+    type:DataTypes.DECIMAL,
+    allowNull: false,
   },
   externalId: {
     type:DataTypes.STRING

@@ -7,31 +7,32 @@ const client = gocardless(process.env.GOCARDLESS_ACCESS_TOKEN, constants.Environ
 
 export const createPayment = async (userId: string, bookId: string, amount: number) => {
   try {
-    // Create a customer first (this should be done once per user)
+
+    
     const customer = await client.customers.create({
       params: {
-        given_name: 'User First Name', // Replace with actual user first name
-        family_name: 'User Last Name', // Replace with actual user last name
-        email: 'user@example.com', // Replace with actual user email
-        // Additional fields as required
-      },
+        given_name: 'nilesh', 
+        family_name: 'kasar', 
+        email: 'nilesh@gmail.com', 
+        
+      }
     });
 
-    // Create a mandate (this should be done once per user per payment method)
+    
     const mandate = await client.mandates.create({
       params: {
-        scheme: 'bacs', // or another scheme available in your country
+        scheme: 'bacs',
         links: {
-          customer_bank_account: 'bank_account_id', // Replace with actual bank account ID
+          customer_bank_account: '65677', 
         },
       },
     });
 
-    // Create a payment
+    
     const payment = await client.payments.create({
       params: {
-        amount: amount * 100, // GoCardless API requires amount in pence/cents
-        currency: 'GBP', // Replace with actual currency
+        amount: amount * 100, 
+        currency: 'GBP',
         links: {
           mandate: mandate.id,
         },

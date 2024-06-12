@@ -15,19 +15,24 @@ Book.init({
         primaryKey: true,
     },
     bookCode: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     title: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     description: {
-        type: sequelize_1.DataTypes.TEXT
+        type: sequelize_1.DataTypes.TEXT,
+        allowNull: false,
     },
     publishedYear: {
-        type: sequelize_1.DataTypes.INTEGER
+        type: sequelize_1.DataTypes.INTEGER,
+        allowNull: false,
     },
     price: {
-        type: sequelize_1.DataTypes.DECIMAL
+        type: sequelize_1.DataTypes.DECIMAL,
+        allowNull: false,
     },
     externalId: {
         type: sequelize_1.DataTypes.STRING

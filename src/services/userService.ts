@@ -14,7 +14,9 @@ const register = async (userData: any) => {
 const login = async (username: string, password: string) => {
   const user = await User.findOne({ where: { username } });
   if (!user || !(await bcrypt.compare(password, user.password))) return null;
-  return jwt.sign({ userId: user.id, isAdmin:Boolean }, process.env.SECRET_KEY as string);
+  
+
+  return jwt.sign({ userId: user.id, isAdmin:user.isAdmin }, process.env.SECRET_KEY as string);
 };
 
 

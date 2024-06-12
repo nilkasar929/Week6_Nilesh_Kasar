@@ -1,24 +1,31 @@
 import { Request, Response } from 'express';
-import paymentService from '../services/paymentService';
+import gocardless from '../common/gocardless';
 
-export const createOrder = async (req: Request, res: Response) => {
+export const createPayment = async (req: Request, res: Response) => {
   try {
-    const { userId, bookId, amount } = req.body;
-    const order = await paymentService.createOrder(userId, bookId, amount);
-    res.status(201).json(order);
+    const { amount, currency, mandate_id } = req.body;
+
+    const payment = await gocardless.payments.create({
+      params: {
+        amount,
+        currency,
+        links: {
+          mandate: mandate_id,
+        },
+      },
+    });
+
+    res.status(201).json(payment);
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ "message": error});
   }
 };
 
-export const getOrderById = async (req: Request, res: Response) => {
+export const getPaymentById = async (req: Request, res: Response) => {
   try {
-    const order = await paymentService.getOrderById(req.params.id);
-    if (!order) {
-      return res.status(404).json({ error: 'Order not found' });
-    }
-    res.status(200).json(order);
+    const payment = await gocardless.payments.find(req.params.id);
+    res.status(200).json(payment);
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ "message": error});
   }
 };

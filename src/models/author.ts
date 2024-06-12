@@ -1,7 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
 import  sequelize  from '../postgres/pgConfig';
-import Book from './book';
-import { PassThrough } from 'stream';
 
 interface AuthorAttributes {
     id?: string;

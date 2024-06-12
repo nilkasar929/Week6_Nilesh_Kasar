@@ -25,7 +25,7 @@ const login = (username, password) => __awaiter(void 0, void 0, void 0, function
     const user = yield user_1.default.findOne({ where: { username } });
     if (!user || !(yield bcrypt_1.default.compare(password, user.password)))
         return null;
-    return jsonwebtoken_1.default.sign({ userId: user.id, isAdmin: Boolean }, process.env.SECRET_KEY);
+    return jsonwebtoken_1.default.sign({ userId: user.id, isAdmin: user.isAdmin }, process.env.SECRET_KEY);
 });
 const getCurrentUser = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     return yield user_1.default.findByPk(userId);

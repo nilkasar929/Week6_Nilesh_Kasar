@@ -12,8 +12,8 @@ export const getReviews = async (req: Request, res: Response) => {
 
 export const addReview = async (req: Request, res: Response) => {
   try {
-    const review = await reviewService.addReview((req as any).user.id, req.params.bookId, req.body);
-    res.json(review);
+    const review = await reviewService.addReview((req as any).user.userId, req.params.bookId, req.body);
+    res.status(200).json(review);
   } catch (err:any) {
     res.status(500).json({ error: err.message });
   }

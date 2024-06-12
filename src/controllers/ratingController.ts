@@ -12,7 +12,7 @@ export const getRatings = async (req: Request, res: Response) => {
 
 export const addRating = async (req: Request, res: Response) => {
   try {
-    const rating = await ratingService.addRating((req as any).user.id, req.params.bookId, req.body);
+    const rating = await ratingService.addRating((req as any).user.userId, req.params.bookId, req.body);
     res.json(rating);
   } catch (err:any) {
     res.status(500).json({ error: err.message });

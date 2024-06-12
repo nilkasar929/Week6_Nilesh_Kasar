@@ -50,10 +50,5 @@ Rating.init({
   modelName: 'Rating',
 });
 
-// // Associations
-// Rating.belongsTo(User, { foreignKey: 'userId' });
-// Rating.belongsTo(Book, { foreignKey: 'bookId' });
-// Book.hasMany(Rating);
-// User.hasMany(Rating);
 
 export default Rating;

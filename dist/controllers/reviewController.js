@@ -27,7 +27,7 @@ exports.getReviews = getReviews;
 const addReview = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const review = yield reviewService_1.default.addReview(req.user.id, req.params.bookId, req.body);
-        res.json(review);
+        res.status(200).json(review);
     }
     catch (err) {
         res.status(500).json({ error: err.message });

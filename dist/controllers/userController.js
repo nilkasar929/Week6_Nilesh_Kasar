@@ -17,7 +17,7 @@ const userService_1 = __importDefault(require("../services/userService"));
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = yield userService_1.default.register(req.body);
-        res.json(user);
+        res.status(201).json(user);
     }
     catch (err) {
         res.status(500).json({ error: err.message });
