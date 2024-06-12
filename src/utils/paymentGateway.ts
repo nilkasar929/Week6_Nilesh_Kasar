@@ -1,5 +1,5 @@
-import GoCardless from 'gocardless-nodejs';
 
+<<<<<<< HEAD
 
 const constants = require('gocardless-nodejs/constants');
 const gocardless = require('gocardless-nodejs');
@@ -53,3 +53,5 @@ export const createPayment = async (userId: string, bookId: string, amount: numb
     };
   }
 };
+=======
+>>>>>>> c7c05dcbb3ffa20675cfe9704e87dd8401c2afa5
