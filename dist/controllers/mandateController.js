@@ -12,35 +12,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPaymentById = exports.createPayment = void 0;
+exports.createMandate = void 0;
 const gocardless_1 = __importDefault(require("../common/gocardless"));
-const createPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const createMandate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { amount, currency, mandate_id } = req.body;
-        const payment = yield gocardless_1.default.payments.create({
+        const { customer_id, account_number, branch_code } = req.body;
+        const mandate = yield gocardless_1.default.mandates.create({
             params: {
-                amount,
-                currency,
+                scheme: 'bacs',
                 links: {
-                    mandate: mandate_id,
+                    customer: customer_id,
+                },
+                bank_account: {
+                    account_number,
+                    branch_code,
                 },
             },
         });
-        res.status(201).json(payment);
+        res.status(201).json(mandate);
     }
     catch (error) {
         res.status(500).json({ "message": error });
     }
 });
-exports.createPayment = createPayment;
-const getPaymentById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const payment = yield gocardless_1.default.payments.find(req.params.id);
-        res.status(200).json(payment);
-    }
-    catch (error) {
-        res.status(500).json({ "message": error });
-    }
-});
-exports.getPaymentById = getPaymentById;
-//# sourceMappingURL=paymentController.js.map
+exports.createMandate = createMandate;
+//# sourceMappingURL=mandateController.js.map

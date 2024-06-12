@@ -15,29 +15,25 @@ const gocardless = require('gocardless-nodejs');
 const client = gocardless(process.env.GOCARDLESS_ACCESS_TOKEN, constants.Environments.Sandbox);
 const createPayment = (userId, bookId, amount) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // Create a customer first (this should be done once per user)
         const customer = yield client.customers.create({
             params: {
-                given_name: 'User First Name', // Replace with actual user first name
-                family_name: 'User Last Name', // Replace with actual user last name
-                email: 'user@example.com', // Replace with actual user email
-                // Additional fields as required
-            },
+                given_name: 'nilesh',
+                family_name: 'kasar',
+                email: 'nilesh@gmail.com',
+            }
         });
-        // Create a mandate (this should be done once per user per payment method)
         const mandate = yield client.mandates.create({
             params: {
-                scheme: 'bacs', // or another scheme available in your country
+                scheme: 'bacs',
                 links: {
-                    customer_bank_account: 'bank_account_id', // Replace with actual bank account ID
+                    customer_bank_account: '65677',
                 },
             },
         });
-        // Create a payment
         const payment = yield client.payments.create({
             params: {
-                amount: amount * 100, // GoCardless API requires amount in pence/cents
-                currency: 'GBP', // Replace with actual currency
+                amount: amount * 100,
+                currency: 'GBP',
                 links: {
                     mandate: mandate.id,
                 },

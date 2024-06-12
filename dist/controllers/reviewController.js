@@ -26,7 +26,7 @@ const getReviews = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.getReviews = getReviews;
 const addReview = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const review = yield reviewService_1.default.addReview(req.user.id, req.params.bookId, req.body);
+        const review = yield reviewService_1.default.addReview(req.user.userId, req.params.bookId, req.body);
         res.status(200).json(review);
     }
     catch (err) {

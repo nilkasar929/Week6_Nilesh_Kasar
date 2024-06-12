@@ -30,7 +30,7 @@ const express_1 = __importDefault(require("express"));
 const paymentController = __importStar(require("../controllers/paymentController"));
 const authMiddleware_1 = __importDefault(require("../middleware/authMiddleware"));
 const router = express_1.default.Router();
-router.post('/orders', authMiddleware_1.default, paymentController.createOrder);
-router.get('/orders/:id', authMiddleware_1.default, paymentController.getOrderById);
+router.post('/orders', authMiddleware_1.default, paymentController.createPayment);
+// router.get('/orders/:id', auth, paymentController.getOrderById);
 exports.default = router;
 //# sourceMappingURL=paymentRoutes.js.map

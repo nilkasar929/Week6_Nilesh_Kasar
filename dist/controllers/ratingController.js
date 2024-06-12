@@ -26,7 +26,7 @@ const getRatings = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.getRatings = getRatings;
 const addRating = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const rating = yield ratingService_1.default.addRating(req.user.id, req.params.bookId, req.body);
+        const rating = yield ratingService_1.default.addRating(req.user.userId, req.params.bookId, req.body);
         res.json(rating);
     }
     catch (err) {
